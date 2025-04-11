@@ -1,4 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using SalesOrder.Infrastructure.Context;
+using SalesOrder.Infrastructure.Repository;
+using SalesOrder.Infrastructure.Repository.Customer;
+
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddDbContext<SalesOrderContext>(
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+builder.Services.AddScoped<IComCustomerRepository, ComCustomerRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

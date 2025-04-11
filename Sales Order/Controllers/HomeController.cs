@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using Sales_Order.Models;
+using SalesOrder.Web.Models;
 using System.Diagnostics;
 
-namespace Sales_Order.Controllers
+namespace SalesOrder.Web.Controllers
 {
     public class HomeController : Controller
     {

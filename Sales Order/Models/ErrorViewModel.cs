@@ -1,4 +1,4 @@
-namespace Sales_Order.Models
+namespace SalesOrder.Web.Models
 {
     public class ErrorViewModel
     {

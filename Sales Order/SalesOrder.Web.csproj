@@ -16,4 +16,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\App.Infrastructur\SalesOrder.Infrastructure.csproj" />
+    <ProjectReference Include="..\SalesOrder.Domain\SalesOrder.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Sales_Order.Controllers
+namespace SalesOrder.Web.Controllers
 {
     public class SalesOrderController : Controller
     {

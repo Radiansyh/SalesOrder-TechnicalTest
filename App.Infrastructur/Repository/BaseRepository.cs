@@ -32,7 +32,8 @@ namespace SalesOrder.Infrastructure.Repository
 
         public async Task<IEnumerable<T>> GetAllAsync()
         {
-            return await _dbSet.ToListAsync();
+            var result = await _dbSet.ToListAsync();
+            return result;
         }
 
         public async Task<T> GetByIdAsync(int id)

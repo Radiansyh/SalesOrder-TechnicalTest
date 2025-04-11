@@ -14,7 +14,7 @@ namespace SalesOrder.Domain.Entities.Common
         [Key]
         [Column("COM_CUSTOMER_ID")]
         public int CustomerId { get; set; }
-        [Column("COSTUMER_NAME")]
+        [Column("CUSTOMER_NAME")]
         public string CustomerName { get; set; }
     }
 }
