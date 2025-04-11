@@ -2,7 +2,7 @@
 
 namespace Sales_Order.Controllers
 {
-    public class CustomerController : Controller
+    public class CommonController : Controller
     {
         public IActionResult Index()
         {
