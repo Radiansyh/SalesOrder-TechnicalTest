@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using SalesOrder.Infrastructure.Context;
 using SalesOrder.Infrastructure.Repository;
 using SalesOrder.Infrastructure.Repository.Customer;
+using SalesOrder.Infrastructure.Repository.SalesOrder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,8 @@ builder.Services.AddDbContext<SalesOrderContext>(
 
 builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 builder.Services.AddScoped<IComCustomerRepository, ComCustomerRepository>();
+builder.Services.AddScoped<ISoOrderRepository, SoOrderRepository>();
+builder.Services.AddScoped<ISoItemRepository, SoItemRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -34,6 +37,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=SalesOrder}/{action=Order}/{id?}");
 
 app.Run();

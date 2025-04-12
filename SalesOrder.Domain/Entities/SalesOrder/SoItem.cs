@@ -13,12 +13,12 @@ namespace SalesOrder.Domain.Entities.SalesOrder
     {
         [Key]
         [Column("SO_ITEM_ID")]
-        public int ItemId { get; set; }
+        public long ItemId { get; set; }
         [Column("SO_ORDER_ID")]
-        public int OrderId { get; set; }
+        public long OrderId { get; set; }
         [Column("ITEM_NAME")]
         public string ItemName { get; set; }
         public int Quantity { get; set; }
-        public float Price { get; set; }
+        public double Price { get; set; }
     }
 }

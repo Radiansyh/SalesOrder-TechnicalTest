@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalesOrder.Domain.Entities.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,7 +14,7 @@ namespace SalesOrder.Domain.Entities.SalesOrder
     {
         [Key]
         [Column("SO_ORDER_ID")]
-        public int Order_id { get; set; }
+        public long OrderId { get; set; }
         [Column("ORDER_NO")]
         public string OrderNumber { get; set; }
         [Column("ORDER_DATE")]
@@ -21,5 +22,8 @@ namespace SalesOrder.Domain.Entities.SalesOrder
         [Column("COM_CUSTOMER_ID")]
         public int CustomerId { get; set; }
         public string Address { get; set; }
+
+        [ForeignKey("CustomerId")]
+        public ComCustomer Customer { get; set; }
     }
 }

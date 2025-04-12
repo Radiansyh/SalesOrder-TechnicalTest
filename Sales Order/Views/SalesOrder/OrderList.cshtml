@@ -1,0 +1,62 @@
+﻿@model SalesOrder.Web.Models.SoOrderModel
+
+<div class="container mt-4">
+    <div class="card-custom mb-3">
+        <form class="row g-3 align-items-center" id="searchForm">
+            <div class="col-md-6">
+                <label for="keywords" class="form-label">Keywords</label>
+                <input type="text" class="form-control" id="keywords" name="keywords" placeholder="Input here">
+            </div>
+            <div class="col-md-6">
+                <label for="orderDate" class="form-label">Order Date</label>
+                <input type="date" class="form-control" id="orderDate" name="orderDate">
+            </div>
+            <div class="col-12 text-end">
+                <button type="submit" class="btn btn-dark mt-2">Search</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <a asp-controller="SalesOrder" asp-action="AddEditOrder" class="btn btn-primary">Add New Data</a>
+            <button class="btn btn-success" id="exportBtn"><i class="bi bi-file-excel-fill"></i> Export To Excel</button>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered align-middle" style="table-layout: fixed; width: 100%;">
+            <thead>
+                <tr>
+                    <th style="width: 5%;" class="text-center">No</th>
+                    <th style="width: 15%;" class="text-center">Action</th>
+                    <th style="width: 25%;" class="text-center">Sales Order</th>
+                    <th style="width: 20%;" class="text-center">Order Date</th>
+                    <th style="width: 40%;" class="text-center">Customer</th>
+                </tr>
+            </thead>
+            <tbody id="orderTableBody">
+                @{
+                    int rowNumber = 0;
+                }
+                @foreach (var order in Model.ListOrders)
+                {
+                    <tr>
+                        <td class="text-center">@(++rowNumber)</td>
+                        <td class="text-center">
+                            <a asp-controller="SalesOrder" asp-action="AddEditOrder" asp-route-id="@order.OrderId" class="btn btn-light"><i class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-light delete-order" data-id="@order.OrderId"><i class="bi bi-trash3-fill"></i></a>
+                        </td>
+                        <td class="text-center"><strong>@order.OrderNumber</strong></td>
+                        <td class="text-center">@order.OrderDate.ToString("yyyy-MM-dd")</td>
+                        <td class="text-center">@order.Customer.CustomerName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+@section Scripts {
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="~/js/app/SalesOrder/orderList.js"></script>
+}
